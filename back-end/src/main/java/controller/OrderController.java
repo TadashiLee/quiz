@@ -29,4 +29,10 @@ public class OrderController {
         orderService.createOrder(order);
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping("/orders/{orderId}")
+    public ResponseEntity deleteOrderById(@PathVariable Integer orderId) {
+        orderService.deleteOrderById(orderId);
+        return ResponseEntity.ok().build();
+    }
 }

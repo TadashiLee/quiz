@@ -44,4 +44,8 @@ public class OrderService {
                     .build());
         }
     }
+
+    public void deleteOrderById(Integer orderId) {
+        orderRepository.deleteById(orderId);
+    }
 }
