@@ -1,10 +1,13 @@
 package controller;
 
+import dto.OrderRequest;
 import dto.OrderResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import service.OrderService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,4 +24,9 @@ public class OrderController {
         return ResponseEntity.ok(orders);
     }
 
+    @PostMapping("/orders")
+    public ResponseEntity createOrder(@Valid @RequestBody OrderRequest order) {
+        orderService.createOrder(order);
+        return ResponseEntity.ok().build();
+    }
 }
