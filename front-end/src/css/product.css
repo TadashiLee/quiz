@@ -3,19 +3,19 @@ img{
   height: 150px;
   padding: 10px;
 }
-.phoneName{
+.goodName{
   font-weight: bolder;
   padding: 10px;
 }
 .nameAndButt{
   overflow: hidden;
 }
-.phonePrice{
+.goodPrice{
   float: left;
   width: 60px;
   padding: 10px;
 }
-.phone{
+.good{
   margin-bottom: 20px;
 }
 .addbutton{
