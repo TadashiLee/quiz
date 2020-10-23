@@ -1,12 +1,12 @@
 package controller;
 
 import dto.Product;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import service.ProductService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,5 +21,11 @@ public class ProductController {
     public ResponseEntity<List<Product>> getProducts() {
         List<Product> products = productService.getProducts();
         return ResponseEntity.ok(products);
+    }
+
+    @PostMapping("/products")
+    public ResponseEntity createProduct(@Valid @RequestBody Product product) {
+        productService.createProduct(product);
+        return ResponseEntity.ok().build();
     }
 }

@@ -1,5 +1,7 @@
 package dto;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.ProductEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,5 +42,10 @@ public class Product {
                 .unit(productEntity.getUnit())
                 .image(productEntity.getImage())
                 .build();
+    }
+
+    public String toJson() throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(this);
     }
 }

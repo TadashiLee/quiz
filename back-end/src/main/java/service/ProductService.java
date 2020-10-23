@@ -1,6 +1,8 @@
 package service;
 
 import dto.Product;
+import entity.ProductEntity;
+import exception.ProductExistException;
 import org.springframework.stereotype.Service;
 import repository.ProductRepository;
 
@@ -20,5 +22,13 @@ public class ProductService {
         return productRepository.findAll().stream()
                 .map(Product::fromEntityToProduct)
                 .collect(Collectors.toList());
+    }
+
+    public void createProduct(Product product) {
+        if (productRepository.existsByName(product.getName())) {
+            throw new ProductExistException();
+        }
+
+        productRepository.save(ProductEntity.fromProductToEntity(product));
     }
 }
