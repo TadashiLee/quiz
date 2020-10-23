@@ -82,5 +82,26 @@ public class ProductControllerTest {
         assertEquals(product.getImage(), productEntity.getImage());
     }
 
+    @Test
+    void should_not_create_product_when_name_already_exists() throws Exception {
+        productRepository.save(ProductEntity.builder()
+                .name("可乐")
+                .price(2.30)
+                .unit("unit")
+                .image("image")
+                .build());
 
+        Product product = Product.builder()
+                .name("可乐")
+                .price(2.30)
+                .unit("unit")
+                .image("image")
+                .build();
+
+        mockMvc.perform(post("/products")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(product.toJson()))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error", is("商品已存在，请检查您输入的商品名")));
+    }
 }
