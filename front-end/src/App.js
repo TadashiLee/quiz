@@ -10,33 +10,6 @@ import './App.css';
 class App extends Component {
   
   state = {
-    products: [
-      {
-        price: '￥1',
-        name: '可乐1',
-      },
-      {
-        price: '￥2',
-        name: '可乐2',
-      },
-      {
-        price: '￥3',
-        name: '可乐3',
-      },
-      {
-        price: '￥4',
-        name: '可乐4',
-      },
-      {
-        price: '￥5',
-        name: '可乐5',
-      },
-      {
-        price: '￥6',
-        name: '可乐6',
-      },
-    ],
-    // products: [],
     number: 0,
   };
 
@@ -44,18 +17,12 @@ class App extends Component {
     pathname:"/poducts",
     state:this.state,
   }
-  handleIncrement = () => {
-    this.setState({
-      number: this.state.number + 1,
-    });
-  };
 
   render() {
     return (
       <div className="app">
         <BrowserRouter>
-          <Header number={this.state.number} path={this.path}/>
-          <Products products={this.state.products} onIncrement={this.handleIncrement} />
+          <Header/>
         <Switch>
           <Route exact path='/products' component={Products}/>
           <Route exact path='/details' component={Details}/>
