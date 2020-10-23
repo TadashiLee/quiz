@@ -1,0 +1,24 @@
+img{
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+}
+.phoneName{
+  font-weight: bolder;
+  padding: 10px;
+}
+.nameAndButt{
+  overflow: hidden;
+}
+.phonePrice{
+  float: left;
+  width: 60px;
+  padding: 10px;
+}
+.phone{
+  margin-bottom: 20px;
+}
+.addbutton{
+  background-color: #096ee3;
+}
+.addbutton:active{background-color:#40a9ff;}
